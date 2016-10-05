@@ -1,4 +1,4 @@
-class jobs(object):
+class job(object):
     exec_command = ''
     exec_path = ''
     proj_path = ''
