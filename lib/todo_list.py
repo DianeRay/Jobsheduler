@@ -2,13 +2,14 @@
 # 2.Add existing jobs to queue
 from lib import py
 class remain(object):
-    def __init__(self, queue, concur):
-        # type: (object, object) -> object
+    def __init__(self, concur):
+        # type: (concur) -> unfinished
         """
-        :rtype: object
+        :concur: return the # of concurrent jobs
+        :rtype: list[jobs]
         """
         unfinished = self.find_jobs()
-        return unfinished
+        return unfinished[:concur]
 
     def find_jobs(self):
         job1 = py.job_py(proj_path='print "j1"')

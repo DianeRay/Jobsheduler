@@ -3,8 +3,9 @@ import time
 from lib import todo_list
 from lib import controller
 from os import getcwd,path,mkdir
-
-queue = []
+maxqueue = 100
+working_queue = []
+complete_queue= []
 thread_control = controller.concurrent()
 
 # 1.Create folder under tmp
@@ -19,14 +20,15 @@ def create_sandbox():
 
 # 1.Do something for the jobs remains
 def what_should_i_do(jobs):
-    create_sandbox()
-    pass
+    if len(working_queue) < maxqueue:
+        working_queue.extend(jobs)
+
 
 
 # 1.Find jobs that are not executed
 # 2.Save jobs that are finished
 def check_job_list():
-    jobs = todo_list.remain(queue, thread_control.concur)
+    jobs = todo_list.remain(thread_control.concur)
     what_should_i_do(jobs)
 
 # 1.Show the jobs statistics
