@@ -27,19 +27,23 @@ def what_should_i_do(jobs):
 # 2.Save jobs that are finished
 def check_job_list():
     jobs = todo_list.remain(queue, thread_control.concur)
-    what_should_i_do(todo_list.remain())
+    what_should_i_do(jobs)
 
 # 1.Show the jobs statistics
 def report_job_list():
     pass
 
 
+# schedule.every().day.at("10:30").do(job)
+# schedule.every().monday.do(job)
+# schedule.every().wednesday.at("13:15").do(job)
 schedule.every(10).minutes.do(check_job_list)
 schedule.every().hour.do(report_job_list)
-    #schedule.every().day.at("10:30").do(job)
-    #schedule.every().monday.do(job)
-    #schedule.every().wednesday.at("13:15").do(job)
+
+thread_control.start()
 
 while True:
     schedule.run_pending()
     time.sleep(1)
+
+thread_control.join()
