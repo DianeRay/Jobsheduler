@@ -18,4 +18,4 @@ class concurrent(threading.Thread):
     # 1.Save the current state
     # 2.Notify program to exit
     def dying(self):
-        pass
+        exit(0);

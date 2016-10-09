@@ -15,7 +15,7 @@ class job_py(job):
         pass
 
     def run_job(self):
-        self.p = Popen([self.exec_command, self.proj_path+self.exec_path])
+        self.p = Popen([self.exec_command, self.proj_path + self.exec_path])
 
     def alive(self):
         return self.p.poll()
