@@ -3,6 +3,7 @@ import time
 from lib import py
 from lib import controller
 from os import getcwd,path,mkdir
+from shutil import move
 maxqueue = 100
 working_queue = set()
 complete_queue= set()
@@ -41,6 +42,8 @@ def what_should_i_do(jobs):
         working_queue.union(jobs)
     for i in working_queue:
         if i.debug:
+            i.temp_path = getcwd()+'/tmp'
+            move(i.proj_path, i.temp_path)
 
         if i.p.poll() == 0:
             working_queue.remove(i)

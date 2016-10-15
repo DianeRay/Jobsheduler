@@ -9,6 +9,7 @@ class job_py(job):
         self.exec_command = command
         self.exec_path = exec_path
         self.proj_path = proj_path
+        self.temp_path = ''
 
     # Python do not need compile.
     def compile(self):
